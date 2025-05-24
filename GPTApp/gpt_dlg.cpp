@@ -668,9 +668,3 @@ void GPTDlg::OnLButtonUp(UINT nFlags, CPoint point)
 		RefreshPage();
 	}
 }
-
-void hi()
-{
-	// This function is intentionally left empty.
-	// It can be used for debugging or future enhancements.
-}
