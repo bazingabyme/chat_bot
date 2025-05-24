@@ -353,7 +353,6 @@ void GPTDlg::RefreshPage() {
 	ctrTitle.SetBorderColor(BACKCOLOR1);
 	ctrTitle.Create(DT_LEFT | DT_VCENTER);
 	ctrTitle.SetText(L"  SPAN GPT");
-
 	CRect control_rect = title_rect;
 	control_rect.left = title_rect.right;
 	control_rect.right = control_rect.left + Formation::control_height();
@@ -364,7 +363,7 @@ void GPTDlg::RefreshPage() {
 	ctrCloseButton.MoveWindow(control_rect);
 	HICON close_icon = (HICON)LoadImage(AfxGetInstanceHandle(), MAKEINTRESOURCE(IDI_CLOSE), IMAGE_ICON, Formation::icon_size(Formation::MEDIUM_ICON), Formation::icon_size(Formation::MEDIUM_ICON), LR_DEFAULTCOLOR);
 	ctrCloseButton.SetIcon(close_icon, close_icon, Button::ST_ALIGN_VERT);
-	ctrCloseButton.Create(Button::BUTTON_TYPE::BUTTON_REGULAR, BACKCOLOR1, MODERN_LIGHT_BLUE);
+	ctrCloseButton.Create(Button::BUTTON_TYPE::BUTTON_REGULAR, BACKCOLOR1, BACKCOLOR1_SEL);
 
 	Invalidate(FALSE);
 }
@@ -402,11 +401,13 @@ void GPTDlg::Show(DWORD show) {
 
 void GPTDlg::OnBnClickedGPTClear()
 {
-	ctrQuestion.SetEditText(L"  Ask anything...");
+	ctrQuestion.SetEditText(L"Ask me anything...");
 
-	// Clear chat and add welcome message
-	chat_history_ = L"🚀 Welcome to SPAN GPT! How can I help you today?\r\n\r\n";
-	UpdateChatDisplay();
+	position_ = 0;
+	answer_text_.Empty();
+	answer_text_ = L"🚀 Welcome to SPAN GPT! How can I help you today?\r\n\r\n";
+
+	ctrAnswer.SetText(answer_text_);
 }
 
 void GPTDlg::OnBnClickedGPTClose()
@@ -431,20 +432,16 @@ void GPTDlg::OnBnClickedGPTBrowse()
 DWORD WINAPI inference_gpt(LPVOID args) {
 
 
-
 	Language::SetThreadUILanguage();
 
 	GPTDlg* gpt_dlg = (GPTDlg*)args;
 
 	//std::string query = CT2A(gpt_dlg->question_text_).m_psz;
 	//std::string response = gpt_dlg->Inference_SPAN_GPT(query);
-	std::string response = "Hello, How can I help you!";
+	std::string response = "Hello!";
 	gpt_dlg->answer_text_ = response.c_str();
 	gpt_dlg->answer_text_.Replace(L"\\n", L"\n");
 	gpt_dlg->answer_text_.Replace(L"\"", L"");
-
-	// Remove "Thinking..." message and add actual response
-	gpt_dlg->chat_history_ = gpt_dlg->chat_history_.Left(gpt_dlg->chat_history_.GetLength() - 22);
 
 	Sleep(1);
 
@@ -455,53 +452,33 @@ DWORD WINAPI inference_gpt(LPVOID args) {
 
 
 LRESULT GPTDlg::OnEditEnterPressedMessage(WPARAM wparam, LPARAM lparam) {
-
 	CString question_text = ctrQuestion.GetEditText();
-	question_text.Trim();
-
-	if (question_text.Find(L"Ask anything") != -1 || question_text.IsEmpty()) {
-		return 0;
-	}
+	if (question_text.IsEmpty()) return 0;
 
 	if (question_text_ != question_text || ctrAnswer.GetText().IsEmpty()) {
-
 		question_text_ = question_text;
-
-		// Add user question to chat history
-		chat_history_ += FormatChatMessage(question_text_, TRUE);
-		UpdateChatDisplay();
-
-		// Clear input and show processing
-		ctrQuestion.SetEditText(L"  Ask anything...");
-		chat_history_ += L"SPAN GPT: Thinking...\r\n\r\n";
-		UpdateChatDisplay();
-
 		KillTimer(1);
 		position_ = 0;
 		answer_text_.Empty();
-
-		// REMOVE THIS LINE - it's overwriting your chat display:
-		// ctrAnswer.SetText(answer_text_);  // <-- DELETE THIS LINE
+		ctrAnswer.SetText(L"🤔 Thinking...");
 
 		if (history_selection_index_ != -1) {
 			answer_text_ = history_content_list_[history_selection_index_];
-			// Remove "Thinking..." and add actual answer
-			chat_history_ = chat_history_.Left(chat_history_.GetLength() - 22);
-			chat_history_ += FormatChatMessage(answer_text_, FALSE);
-			UpdateChatDisplay();
 		}
 		else {
 			CreateThread(NULL, 0, inference_gpt, this, 0, NULL);
 			WaitModelOpen(Language::GetString(IDSTRINGT_PLEASE_WAIT), Language::GetString(IDSTRINGT_PROCESSING));
 		}
 
-		// Update history logic...
+		// Update history
 		BOOL question_exist = FALSE;
 		for (int index = 0; index < history_list_.GetSize(); index++) {
 			if (question_text_ == history_list_[index]) {
 				question_exist = TRUE;
+				break;
 			}
 		}
+
 		if (!question_exist) {
 			history_list_.RemoveAt(0);
 			history_list_.Add(question_text_);
@@ -510,10 +487,8 @@ LRESULT GPTDlg::OnEditEnterPressedMessage(WPARAM wparam, LPARAM lparam) {
 			InvalidateRect(history_rect_, FALSE);
 		}
 
-		// COMMENT OUT OR REMOVE the direct setting of ctrAnswerTinyView:
-		// ctrAnswerTinyView.SetText(answer_text_); // <-- COMMENT THIS OUT
-
-		SetTimer(1, 100, NULL);
+		ctrAnswerTinyView.SetText(answer_text_);
+		SetTimer(1, 50, NULL); // Faster typing animation
 	}
 	return 0;
 }
@@ -621,25 +596,20 @@ void GPTDlg::OnPaint()
 void GPTDlg::OnTimer(UINT_PTR nIDEvent)
 {
 	if (nIDEvent == 1) {
-		// Don't do typing animation if answer_text_ is empty
-		if (answer_text_.IsEmpty()) {
-			KillTimer(1);
-			return;
-		}
-
-		// Simple approach - just update the final answer when ready
-		if (!answer_text_.IsEmpty()) {
-			// Remove "Thinking..." message
-			int thinkingPos = chat_history_.Find(L"SPAN GPT: Thinking...");
-			if (thinkingPos != -1) {
-				chat_history_ = chat_history_.Left(thinkingPos);
-			}
-
-			// Add the actual response
-			chat_history_ += FormatChatMessage(answer_text_, FALSE);
-			UpdateChatDisplay();
+		position_ = answer_text_.Find(L" ", position_);
+		if (position_ == -1) {
+			ctrAnswer.SetText(answer_text_);
 			KillTimer(1);
 		}
+		else {
+			CString text = answer_text_.Mid(0, position_);
+			ctrAnswer.SetText(text);
+			position_++;
+		}
+	}
+	else if (nIDEvent == 2) {
+		//Formation::CloseAllPopups();
+
 	}
 	CDialogEx::OnTimer(nIDEvent);
 }
@@ -682,49 +652,19 @@ void GPTDlg::OnLButtonUp(UINT nFlags, CPoint point)
 	ReleaseCapture();
 
 	if (history_selection_index_ >= 0 && history_selection_index_ < history_list_.GetSize()) {
-		// Load selected history item
+
 		ctrQuestion.SetEditText(history_list_[history_selection_index_]);
-
-		// Set the answer_text_ but don't directly update ctrAnswer
-		answer_text_ = history_content_list_[history_selection_index_];
-
-		// Add both question and answer to chat history
-		chat_history_ += FormatChatMessage(history_list_[history_selection_index_], TRUE);
-		chat_history_ += FormatChatMessage(answer_text_, FALSE);
-		UpdateChatDisplay();
+		OnEditEnterPressedMessage(0, 0);
 
 		history_selection_index_ = -1;
 		InvalidateRect(history_rect_, FALSE);
 
 	}
 	else if (min_max_button_clicked_) {
+
 		full_view_ = !full_view_;
+
 		min_max_button_clicked_ = FALSE;
 		RefreshPage();
 	}
-}
-
-CString GPTDlg::FormatChatMessage(const CString& message, BOOL isUser) {
-	CString formatted;
-	if (isUser) {
-		formatted = L"You: " + message + L"\r\n\r\n";
-	}
-	else {
-		formatted = L"SPAN GPT: " + message + L"\r\n\r\n";
-	}
-	return formatted;
-}
-
-// Helper function to update chat display
-void GPTDlg::UpdateChatDisplay() {
-	ctrAnswer.SetText(chat_history_);
-	ctrAnswerTinyView.SetText(chat_history_);
-
-	// Scroll to bottom
-	//ctrAnswer.SetSel(-1, -1);
-}
-
-void hi()
-{
-
 }

@@ -76,8 +76,6 @@ private:
 	std::string Inference_SPAN_GPT(const std::string& query);
 	//std::string MakePathRequest(const std::string& url, const std::string& data);
 	std::string MakeQueryRequest(const std::string& url, const std::string& query);
-	CString FormatChatMessage(const CString& message, BOOL isUser);
-	void UpdateChatDisplay();
 
 	CString chat_history_;
 	LabelCtrl ctrTitle;
