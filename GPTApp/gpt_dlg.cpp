@@ -723,3 +723,8 @@ void GPTDlg::UpdateChatDisplay() {
 	// Scroll to bottom
 	//ctrAnswer.SetSel(-1, -1);
 }
+
+void hi()
+{
+
+}
