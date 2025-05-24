@@ -1,0 +1,402 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="button.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="capsulectrl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="captionbarctrl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dropdownlist.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="edit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="editctrl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="file_dlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gridctrl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="imagectrl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="itemctrl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="keyboard_dlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="labelctrl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="listctrl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="listctrlstyled.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="menuctrl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="onoffctrl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="progressctrl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="queuectrl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="scrollbar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sliderctrl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sortheaderctrl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sortlistctrl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="spinctrl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tabctrl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tabitemctrl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="thumblistctrl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="win_paint.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="win_shape.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gridctrlex.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="thumblistctrlpro.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dropdownlistex.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="searchctrl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="button.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="capsulectrl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="captionbarctrl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dropdownlist.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="edit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="editctrl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="file_dlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gridctrl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="imagectrl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="itemctrl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="keyboard_dlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="labelctrl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="listctrl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="listctrlstyled.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="menuctrl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="onoffctrl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="progressctrl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="queuectrl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="scrollbar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sliderctrl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sortheaderctrl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sortlistctrl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="spinctrl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tabctrl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tabitemctrl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="thumblistctrl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vision_controls.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="win_paint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="win_shape.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gridctrlex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="thumblistctrlpro.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dropdownlistex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="searchctrl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\camera.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\binaryview.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\centerlineoff.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\centerlineon.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\fit.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\lockimage.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\multipleview.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\pinoff.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\pinon.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\singleview.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\sourceview.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\unlockimage.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\zoomin.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\zoomout.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\hidepassword.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\showpassword.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\down.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\left.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\pixinfoon.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\right.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\up.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\rotate.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\anticlockwise.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\clockwise.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\move.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\righttopplus.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\leftbottomminus.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\leftbottomplus.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\lefttopminus.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\lefttopplus.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\resize.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\rightbottomminus.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\rightbottomplus.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\righttopminus.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\close.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\language.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\zoomshape.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\error.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\information.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\question.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\delete.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\saveimage.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\languageview.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\hideshapes.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\showshapes.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\history.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\search.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\clear.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\share.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\move.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\handfree.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\rotate.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\pencil.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\eraser.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\VisionControls.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\colorpicker.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{411d504a-f686-4a96-bbf4-313b0ae00b10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{227efd4d-46e6-4bd8-a35e-0f6e933437aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{e4d2fa53-5aa0-4c72-9502-de41ff1183cc}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="VisionControls.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
