@@ -436,15 +436,29 @@ DWORD WINAPI inference_gpt(LPVOID args) {
 
 	GPTDlg* gpt_dlg = (GPTDlg*)args;
 
+	// Get the current question and existing conversation
+	CString current_question = gpt_dlg->question_text_;
+	CString previous_conversation = gpt_dlg->answer_text_;
+
+	// Add the question to the conversation
+	CString question_display;
+	question_display.Format(L"\r\n %s\r\n\r\n", current_question);
+
+	// Simulate API call (replace with your actual API call)
 	//std::string query = CT2A(gpt_dlg->question_text_).m_psz;
 	//std::string response = gpt_dlg->Inference_SPAN_GPT(query);
-	std::string response = "Hello!";
-	gpt_dlg->answer_text_ = response.c_str();
-	gpt_dlg->answer_text_.Replace(L"\\n", L"\n");
+	std::string response = "Hello! This is a sample response from SPAN GPT.";
+
+	// Format the AI response
+	CString ai_response;
+	ai_response.Format(L"🤖 SPAN GPT : %s\r\n", CString(response.c_str()));
+
+	// Combine everything: previous conversation + question + answer
+	gpt_dlg->answer_text_ = previous_conversation + question_display + ai_response;
+	gpt_dlg->answer_text_.Replace(L"\\n", L"\r\n");
 	gpt_dlg->answer_text_.Replace(L"\"", L"");
 
 	Sleep(1);
-
 	WaitModelClose(Language::GetString(IDSTRINGT_PROCESSING));
 
 	return 0;
@@ -459,8 +473,8 @@ LRESULT GPTDlg::OnEditEnterPressedMessage(WPARAM wparam, LPARAM lparam) {
 		question_text_ = question_text;
 		KillTimer(1);
 		position_ = 0;
-		answer_text_.Empty();
-		ctrAnswer.SetText(L"🤔 Thinking...");
+		CString current_conversation = answer_text_;
+		ctrAnswer.SetText(current_conversation + L"\r\n👤 You: " + question_text_ + L"\r\n\r\n🤔 Thinking...");
 
 		if (history_selection_index_ != -1) {
 			answer_text_ = history_content_list_[history_selection_index_];
@@ -488,7 +502,8 @@ LRESULT GPTDlg::OnEditEnterPressedMessage(WPARAM wparam, LPARAM lparam) {
 		}
 
 		ctrAnswerTinyView.SetText(answer_text_);
-		SetTimer(1, 50, NULL); // Faster typing animation
+		SetTimer(1, 30, NULL); 
+		ctrQuestion.SetEditText(L"Ask me anything...");
 	}
 	return 0;
 }
@@ -600,6 +615,7 @@ void GPTDlg::OnTimer(UINT_PTR nIDEvent)
 		if (position_ == -1) {
 			ctrAnswer.SetText(answer_text_);
 			KillTimer(1);
+			//ctrAnswer.SetSel(-1, -1);
 		}
 		else {
 			CString text = answer_text_.Mid(0, position_);
@@ -609,7 +625,6 @@ void GPTDlg::OnTimer(UINT_PTR nIDEvent)
 	}
 	else if (nIDEvent == 2) {
 		//Formation::CloseAllPopups();
-
 	}
 	CDialogEx::OnTimer(nIDEvent);
 }
